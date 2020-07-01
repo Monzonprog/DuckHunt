@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DuckHunt</string>
     <string name="start_game">Iniciar juego</string>
+    <string name="enter_nick">Escribe tu nick</string>
 </resources>
