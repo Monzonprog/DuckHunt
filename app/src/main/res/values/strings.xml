@@ -3,4 +3,5 @@
     <string name="start_game">Iniciar juego</string>
     <string name="enter_nick">Escribe tu nick</string>
     <string name="emptyNick">Introduce tu nick</string>
+    <string name="initial_time">60s</string>
 </resources>
