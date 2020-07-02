@@ -1,7 +1,5 @@
 package com.jmonzon.duckhunt.common.ui
 
-import android.content.Context
-import android.content.DialogInterface
 import android.graphics.Point
 import android.graphics.Typeface
 import android.os.Bundle
@@ -22,16 +20,16 @@ class GameActivity : AppCompatActivity() {
     private var widthScreen = 0
     private var heightScreen = 0
     private lateinit var random: Random
-    lateinit var context: Context
     private var gameOver: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
-        context = this
+
         setNick()
         changeFont()
         initDisplay()
+        moveDuck()
         eventsClickDuck()
         initCountDown()
     }
@@ -63,6 +61,7 @@ class GameActivity : AppCompatActivity() {
         random = Random()
     }
 
+    //Manage actions when click in a duck
     private fun eventsClickDuck() {
         imageViewDuck.setOnClickListener {
             if (!gameOver) {
@@ -75,13 +74,14 @@ class GameActivity : AppCompatActivity() {
                 Handler().postDelayed({
                     imageViewDuck.setImageResource(R.drawable.duck)
                     moveDuck()
-                }, 250L)
+                }, 125L)
             }
         }
 
     }
 
     private fun moveDuck() {
+        imageViewDuck.visibility = View.VISIBLE
         val min = 0
         //Prevent draw the duck out of  screen
         val maxX: Int = widthScreen - imageViewDuck.width
@@ -121,14 +121,18 @@ class GameActivity : AppCompatActivity() {
         }
 
         builder.apply {
-            setPositiveButton(R.string.restart
+            setPositiveButton(
+                R.string.restart
             ) { dialog, id ->
-                // User clicked OK button
+                //Restart the game
+                resetGame()
             }
             setNegativeButton(
                 R.string.exit
             ) { dialog, id ->
+                //Close the dialog and kill activity
                 dialog.dismiss()
+                finish()
             }
         }
 
@@ -138,5 +142,15 @@ class GameActivity : AppCompatActivity() {
 
         val dialog: AlertDialog? = builder.create()
         dialog!!.show()
+    }
+
+    //Restart the game and set counters to 0
+    private fun resetGame() {
+        val reset = 0
+        counter = reset
+        gameOver = false
+        moveDuck()
+        textViewCounter.text = reset.toString()
+        initCountDown()
     }
 }
