@@ -4,4 +4,8 @@
     <string name="enter_nick">Escribe tu nick</string>
     <string name="emptyNick">Introduce tu nick</string>
     <string name="initial_time">60s</string>
+    <string name="game_over">Game Over</string>
+    <string name="duck_hunted">¡Has cazado %1$d patos!</string>
+    <string name="restart">Reiniciar</string>
+    <string name="exit">Salir</string>
 </resources>
