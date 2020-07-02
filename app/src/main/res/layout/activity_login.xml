@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_game"
     android:padding="16dp"
-    tools:context=".LoginActivity">
+    tools:context=".common.ui.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:src="@drawable/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/editTextNick"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="82dp"
         android:elegantTextHeight="false"
         android:ems="10"
         android:hint="@string/enter_nick"

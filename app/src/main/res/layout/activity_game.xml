@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_game"
     android:padding="16dp"
-    tools:context=".GameActivity">
+    tools:context=".common.ui.GameActivity">
 
     <ImageView
         android:id="@+id/imageViewDuck"
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="00000"
+        android:text="0"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewCounter"
         app:layout_constraintStart_toEndOf="@+id/imageViewCounter"
         app:layout_constraintTop_toTopOf="@+id/imageViewCounter" />
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageViewTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
