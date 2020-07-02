@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
                 editTextNick.error = getString(R.string.emptyNick)
                 Log.i("LoginActivity: ", "Nick en blanco")
             } else {
+                editTextNick.setText("")
                 val intent = Intent(this, GameActivity::class.java)
                 intent.putExtra(Constantes.EXTRA_NICK, nick)
                 startActivity(intent)
