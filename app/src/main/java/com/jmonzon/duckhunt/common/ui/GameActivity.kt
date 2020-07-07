@@ -9,6 +9,7 @@ import android.view.Display
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.FirebaseFirestore
 import com.jmonzon.duckhunt.R
 import com.jmonzon.duckhunt.common.Constantes
 import kotlinx.android.synthetic.main.activity_game.*
@@ -26,12 +27,18 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
+        connectToFireStore()
         setNick()
         changeFont()
         initDisplay()
         moveDuck()
         eventsClickDuck()
         initCountDown()
+    }
+
+    //Connect to Firebase DB
+    private fun connectToFireStore() {
+        val db = FirebaseFirestore.getInstance()
     }
 
     //Get nick and use it
