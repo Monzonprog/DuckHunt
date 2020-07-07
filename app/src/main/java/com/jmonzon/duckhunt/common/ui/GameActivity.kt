@@ -17,34 +17,41 @@ import java.util.*
 
 
 class GameActivity : AppCompatActivity() {
-    private var counter: Int = 0
     private var widthScreen = 0
+    private var counter: Int = 0
     private var heightScreen = 0
+    private var id: String? = ""
+    private var nick: String? = ""
     private lateinit var random: Random
     private var gameOver: Boolean = false
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
         connectToFireStore()
+        recoverExtras()
         setNick()
         changeFont()
         initDisplay()
-        moveDuck()
         eventsClickDuck()
         initCountDown()
     }
 
     //Connect to Firebase DB
     private fun connectToFireStore() {
-        val db = FirebaseFirestore.getInstance()
+        db = FirebaseFirestore.getInstance()
     }
 
-    //Get nick and use it
-    private fun setNick() {
+    //Recover data from bundle
+    private fun recoverExtras() {
         val bundle: Bundle? = intent.extras
-        val nick: String? = bundle?.getString(Constantes.EXTRA_NICK, "Default")
+        nick = bundle?.getString(Constantes.EXTRA_NICK, "Default")
+        id = bundle?.getString(Constantes.EXTRA_ID, "")
+    }
+
+    private fun setNick(){
         textViewNick.text = nick
     }
 
@@ -117,8 +124,15 @@ class GameActivity : AppCompatActivity() {
                 textViewTimer.text = "0s"
                 gameOver = true
                 showDialogGameOver()
+                saveResultFireStore()
             }
         }.start()
+    }
+
+    private fun saveResultFireStore() {
+        db.collection("users")
+            .document(id.toString())
+            .update("ducks", counter)
     }
 
     //Show dialog when game is finish

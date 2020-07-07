@@ -66,10 +66,11 @@ class LoginActivity : AppCompatActivity() {
     private fun addNickToFireStore() {
         db.collection("users").
             add(UserModel(nick, 0))
-            .addOnSuccessListener { queryDocumentSnapshots ->
+            .addOnSuccessListener { documentReference ->
                 editTextNick.setText("")
                 val intent = Intent(this, GameActivity::class.java)
                 intent.putExtra(Constantes.EXTRA_NICK, nick)
+                intent.putExtra(Constantes.EXTRA_ID, documentReference.id)
                 startActivity(intent)
                 Log.i("Registro en la BBDD: ", "Registro ok")
                 Log.i("LoginActivity: ", "Pasamos a pantalla de juego")
