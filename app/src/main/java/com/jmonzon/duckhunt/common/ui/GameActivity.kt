@@ -1,5 +1,7 @@
 package com.jmonzon.duckhunt.common.ui
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Point
 import android.graphics.Typeface
 import android.os.Bundle
@@ -149,10 +151,12 @@ class GameActivity : AppCompatActivity() {
                 resetGame()
             }
             setNegativeButton(
-                R.string.exit
+                R.string.showRanking
             ) { dialog, id ->
                 //Close the dialog and kill activity
                 dialog.dismiss()
+                val i = Intent(context, RankingActivity::class.java)
+                startActivity(i)
                 finish()
             }
         }
