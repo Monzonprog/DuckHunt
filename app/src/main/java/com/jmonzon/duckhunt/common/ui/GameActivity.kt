@@ -1,6 +1,5 @@
 package com.jmonzon.duckhunt.common.ui
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Point
 import android.graphics.Typeface
@@ -27,6 +26,7 @@ class GameActivity : AppCompatActivity() {
     private lateinit var random: Random
     private var gameOver: Boolean = false
     private lateinit var db: FirebaseFirestore
+    private var time: Long = 10000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +53,7 @@ class GameActivity : AppCompatActivity() {
         id = bundle?.getString(Constantes.EXTRA_ID, "")
     }
 
-    private fun setNick(){
+    private fun setNick() {
         textViewNick.text = nick
     }
 
@@ -115,7 +115,7 @@ class GameActivity : AppCompatActivity() {
 
     //Method for count time since 60s to 0s
     private fun initCountDown() {
-        object : CountDownTimer(6000, 1000) {
+        object : CountDownTimer(time, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val textToShow: String = (millisUntilFinished / 1000).toString() + "s"
                 textViewTimer.text = textToShow
