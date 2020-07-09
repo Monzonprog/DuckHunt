@@ -1,5 +1,6 @@
 # DuckHunt
-Juego creado siguiendo el curso Master Desarrollo Android con Java y Kotlin
+Juego creado siguiendo el curso Master Desarrollo Android con Java y Kotlin para el aprendizaje de
+la plataforma Firebase
 
 El juego se refactorizará para:
 
