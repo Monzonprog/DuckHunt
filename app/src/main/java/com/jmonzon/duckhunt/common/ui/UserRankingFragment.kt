@@ -1,20 +1,18 @@
 package com.jmonzon.duckhunt.common.ui
 
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.jmonzon.duckhunt.R
 import com.jmonzon.duckhunt.common.models.UserModel
-import kotlinx.android.synthetic.main.activity_login.*
 
 class UserRankingFragment : Fragment() {
 
@@ -54,7 +52,7 @@ class UserRankingFragment : Fragment() {
                     .get()
                     .addOnCompleteListener {
                         userList = ArrayList()
-                        for (document: DocumentSnapshot in it.result!!){
+                        for (document: DocumentSnapshot in it.result!!) {
                             val user: UserModel = document.toObject(UserModel::class.java)!!
                             (userList as ArrayList<UserModel>).add(user)
                         }
