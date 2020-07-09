@@ -22,7 +22,6 @@ class UserRankingFragment : Fragment() {
     lateinit var adapter: MyUserModelRecyclerViewAdapter
     private lateinit var db: FirebaseFirestore
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         connectToFireStore()

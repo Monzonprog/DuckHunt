@@ -13,7 +13,6 @@ class RankingActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Ranking"
 
-
         supportFragmentManager.beginTransaction()
             .add(R.id.fragmentContainer, UserRankingFragment())
             .commit()

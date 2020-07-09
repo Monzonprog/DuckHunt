@@ -1,5 +1,6 @@
 package com.jmonzon.duckhunt.common.ui
 
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +13,12 @@ class MyUserModelRecyclerViewAdapter(
     private val values: List<UserModel>
 ) : RecyclerView.Adapter<MyUserModelRecyclerViewAdapter.ViewHolder>() {
 
+    private lateinit var typeface: Typeface
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.fragment_user_ranking, parent, false)
+        typeface = Typeface.createFromAsset(parent.context.assets, "fonts/pixel.ttf")
         return ViewHolder(view)
     }
 
@@ -24,6 +28,12 @@ class MyUserModelRecyclerViewAdapter(
         holder.textViewPosition.text = pos
         holder.textViewNickname.text = item.nick
         holder.textViewDucks.text = item.ducks.toString()
+
+        //Change font type
+
+        holder.textViewPosition.typeface = typeface
+        holder.textViewNickname.typeface = typeface
+        holder.textViewDucks.typeface = typeface
     }
 
     override fun getItemCount(): Int = values.size
@@ -33,6 +43,5 @@ class MyUserModelRecyclerViewAdapter(
         var textViewPosition: TextView = view.findViewById(R.id.textViewPosition)
         var textViewNickname: TextView = view.findViewById(R.id.textViewNick)
         var textViewDucks: TextView = view.findViewById(R.id.textViewDucks)
-
     }
 }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".common.ui.RankingActivity">
+    tools:context=".common.ui.RankingActivity"
+    android:background="@drawable/bg_game">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
